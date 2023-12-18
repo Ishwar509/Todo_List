@@ -1,0 +1,253 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: monospace;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+/*--------------------- Sidenav ---------------------------------*/
+.sidenavContainer {
+    position: fixed;
+    width: 0;
+    overflow: hidden;
+    height: 100vh;
+}
+
+.sidenav {
+    height: 100%;
+    padding-top: 20px;
+    padding-left: 20px;
+    display: grid;
+    grid-template-rows: auto auto auto 1fr auto;
+    row-gap: 10px;
+    background-color: orange;
+}
+
+#closebtn {
+    width: 40px;
+    font-size: 2rem;
+    background-color: transparent;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+#search {
+    width: 200px;
+    height: 40px;
+    padding-left: 4px;
+    border-radius: 4px;
+}
+
+#addProject {
+    padding: 10px 0;
+    font-size: 1.3rem;
+    border-radius: 4px;
+    background-color: transparent;
+    border: none;
+    text-align: left;
+    width: 200px;
+    transition: background-color 0.2s;
+}
+
+.projects {
+    list-style: none;
+    transition: width 0.4s;
+}
+
+.projects li {
+    display: flex;
+    align-items: center;
+    width: 200px;
+    height: 40px;
+    background-color: lightgray;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    transition: background-color 0.2s, border 0.1s;
+}
+
+.default {
+    border-bottom: 1px solid black;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user {
+    overflow: hidden auto;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid black;
+}
+
+.user::-webkit-scrollbar {
+    width: 8px;
+}
+
+.user::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 6px;
+}
+
+.user::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background-color: lightgreen;
+}
+
+#closebtn:hover, #addProject:hover {
+    background-color: lightblue;
+} 
+
+.projects li:hover {
+    background-color: aquamarine;
+    border-left: 4px solid blue;
+}
+
+/* ----------------------------------------------------------- */
+
+/* -----------------Main------------------------------------- */
+
+.main {
+    display: grid;
+    height: 100vh;
+    grid-template-rows: auto auto 1fr auto;  
+    padding: 20px;
+    row-gap: 20px;
+}
+
+#openbtn {
+    justify-self: start;
+}
+
+.projectInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.title {
+    font-size: 1.5rem;
+}
+
+.tasklist {
+    list-style: none;
+    overflow: hidden auto;
+    display: grid;
+    grid-template-rows: repeat(auto-fill, 40px);
+    row-gap: 10px;
+    grid-auto-flow: row;
+    grid-auto-rows: 40px;
+}
+
+.tasklist::-webkit-scrollbar {
+    width: 10px;
+}
+
+.tasklist::-webkit-scrollbar-track {
+    background: black;
+    border-radius: 6px;
+}
+
+.tasklist::-webkit-scrollbar-thumb {
+    background-color: blue;
+    border-radius: 6px;
+    border: 1px solid black;
+}
+
+.addTask {
+    display: flex;
+    align-items: baseline;
+    height: 50px;
+    padding: 8px;
+    padding-left: 20px;
+    background-color: gray;
+    color: black;
+    font-size: 1.5rem;
+}
+
+.addTask::before {
+    content: '+';
+    font-size: 2rem;
+    margin-right: 10px;
+}
+
+/* ----------------Aside------------------- */
+
+.asideContainer {
+    width: 0;
+    overflow: hidden;
+    position: fixed;
+    right: 0;  
+    height: 100vh;
+}
+
+.aside {
+    height: 100%;
+    padding: 10px;
+    display: grid;
+    grid-template-rows: auto auto auto 2fr auto auto 1fr;
+    row-gap: 10px;
+    background-color: orange;
+}
+
+.closeTaskInfo {
+    justify-self: end;
+    width: 40px;
+    font-size: 2rem;
+}
+
+.taskInfo {
+    display: flex;
+    justify-content: space-between;
+}
+
+.checklist {
+    list-style: none;
+    overflow:  hidden auto;
+    border: 1px solid black;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.addChecklist:hover {
+    background-color: aqua;
+}
+
+.addChecklist::before {
+    content: '+ ';
+    font-size: 1.2rem;
+}
+
+.note {
+    border: 1px solid black;
+    padding: 4px;
+    border-radius: 4px;
+    overflow: hidden auto;
+    overflow-wrap: break-word;
+}
+
+/* -------------------Media Queries-------------- */
+
+@media  screen and (min-width: 800px) {
+
+    #closebtn, #openbtn {
+        display: none;
+    }
+
+    .wrapper {
+        grid-template-columns: auto 1fr auto;
+    }
+
+    .sidenavContainer {
+        position: static;
+        width: 240px;
+    }
+
+    .asideContainer {
+        position: static;
+        width: 240px;
+    }
+    
+}
