@@ -4,25 +4,34 @@ import SidenavUI from "./sidenavUI.js";
 class Sidenav {
     constructor(projectList){
         this.mediator = null;
+        this.projectMap = new Map();
 
         this.projectList = projectList;
         this.sidenavDOM = new SidenavDOM();
         this.sidenavUI = new SidenavUI(this);
     }
 
-    selectDefaultProject(){
-        this.mediator.notify(this, 'projectSelected', this.projectList.values().next().value);
-    }
-
     init(){
-        this.sidenavDOM.renderProjects(this.projectList);
-        this.mediator.notify(this, 'projectsLoaded', this.projectList);
+        this.refresh();
         this.sidenavUI.loadUI();
         this.selectDefaultProject();
     }
 
+    loadProjectListData(){
+        this.projectMap.clear();
+
+        for(let project of this.projectList){
+            this.projectMap.set(this.getUID(), project);
+        }
+    }
+
+    selectDefaultProject(){
+        this.mediator.notify(this, 'projectSelected', this.projectMap.values().next().value);
+    }
+
     refresh(){
-        this.sidenavDOM.renderProjects(this.projectList);
+        this.loadProjectListData();
+        this.sidenavDOM.renderProjects(this.projectMap);
         this.mediator.notify(this, 'projectsLoaded', this.projectList);
     }
 
@@ -35,9 +44,19 @@ class Sidenav {
             this.sidenavUI.closeSideNav();
         }
 
-        if(eventType == 'projectAdded' || eventType == 'taskAdded'){
+        if(eventType == 'projectAdded' || eventType == 'taskAdded' || eventType == 'taskDeleted'){
             this.refresh();
         }
+
+        if(eventType == 'projectDeleted'){
+            this.refresh();
+            this.selectDefaultProject();
+        }
+    }
+
+    getUID(){
+        let randomNum = Math.floor(Math.random() * 1e9);
+        return randomNum.toString(36);
     }
 };
 

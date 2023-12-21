@@ -1,4 +1,6 @@
 
+import FormDataHandler from "./formDataHandler";
+
 class FormUI {
     constructor(form){
         this.form = form;
@@ -11,15 +13,15 @@ class FormUI {
 
     loadUI(){
         this.projectForm.addEventListener('submit', () => {
-            this.form.formDataHandler.handleData('project');
+            let projectData = FormDataHandler.getProjectData();
             this.projectForm.reset();
-            this.form.mediator.notify(this.form, 'projectAdded', null);
+            this.form.mediator.notify(this.form, 'addProject', projectData);
         });
 
         this.taskForm.addEventListener('submit', () => {
-            this.form.formDataHandler.handleData('task');
+            let todoData = FormDataHandler.getTodoData();
             this.taskForm.reset();
-            this.form.mediator.notify(this.form, 'taskAdded', null);
+            this.form.mediator.notify(this.form, 'addTask', todoData);
         });
 
         this.closeFormBtns.forEach((curr) => {

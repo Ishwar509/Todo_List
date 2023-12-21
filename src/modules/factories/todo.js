@@ -1,20 +1,20 @@
 
 class Step{
-    constructor(title = '', isComplete = false){
+    constructor({title = '', isComplete = false} = {}){
         this.title = title;
         this.isComplete = isComplete;
     }
 };
 
 class Todo {
-    constructor(title = '', dueDate = '', priority = '', checklist = [], isComplete = false, note = ''){
+    constructor({title = '', dueDate = '', priority = '', checklist = [], isComplete = false, note = '', createDate = new Date().toDateString()} = {}){
         this.title = title;
         this.dueDate = dueDate;
         this.priority = priority;
         this.checklist = checklist;
         this.isComplete = isComplete;
         this.note = note;
-        this.createDate = new Date().toDateString();
+        this.createDate = createDate;
     }
 
     addStep(step){

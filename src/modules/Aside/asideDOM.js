@@ -11,16 +11,16 @@ class AsideDOM {
 
     renderTaskInfo(task){
         this.taskTitleElement.textContent = task.title;
-        this.dueDateElement.textContent = task.dueDate;
+        this.dueDateElement.textContent = `Due-Date: ${task.dueDate}`;
         this.noteElement.textContent = task.note;
-        this.priorityElement.textContent = task.priority;
-        this.createDateElement.textContent = task.createDate;
+        this.priorityElement.textContent = `Priority: ${task.priority}`;
+        this.createDateElement.textContent = `Created on: ${task.createDate}`;
 
         this.checklistElement.innerHTML = "";
         
         for(let step of task.checklist){
             let listElement = document.createElement('li');
-            listElement.textContent = step.title;
+            listElement.textContent = step;
 
             this.checklistElement.appendChild(listElement);
         }

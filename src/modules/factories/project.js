@@ -1,6 +1,6 @@
 
 class Project {
-    constructor(title = '', todoList = [], type = 'user'){
+    constructor({title = '', todoList = [], type = 'user'} = {}){
         this.title = title;
         this.todoList = todoList;
         this.type = type;
@@ -11,7 +11,7 @@ class Project {
     }
 
     removeTodo(todo){
-        this.todoList =  this.todoList.filter((curr) => {curr !== todo});
+        this.todoList = this.todoList.filter((curr) => {return curr !== todo});
     }
 };
 

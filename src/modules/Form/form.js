@@ -1,10 +1,8 @@
 import FormUI from "./formUI.js";
-import FormDataHandler from "./formDataHandler.js";
 
 class Form {
     constructor(){
         this.formUI = new FormUI(this);
-        this.formDataHandler = new FormDataHandler();
         this.mediator = null;
     }
 

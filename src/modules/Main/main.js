@@ -47,6 +47,10 @@ class Main {
         if(eventType == 'taskAdded'){
             this.refresh();
         }
+
+        if(eventType == 'taskDeleted'){
+            this.refresh();
+        }
     }
 };
 

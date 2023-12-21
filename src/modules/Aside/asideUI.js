@@ -4,11 +4,17 @@ class AsideUI {
         this.aside = aside;
         this.closeAsideBtn = document.querySelector('.closeAside');
         this.asideContainer = document.querySelector('.asideContainer');
+        this.deleteTaskBtn = document.querySelector('.deleteTask');
     }
 
     loadUI(){
         this.closeAsideBtn.addEventListener('click', () => {
             this.closeAside();
+        });
+
+        this.deleteTaskBtn.addEventListener('click', () => {
+            this.closeAside();
+            this.aside.mediator.notify(this.aside, 'deleteTask', this.aside.currTask);
         });
     }
 
