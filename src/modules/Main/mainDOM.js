@@ -1,9 +1,9 @@
 
-
 class MainDOM {
     constructor(){
         this.tasklistContainer = document.querySelector('.tasklist');
         this.titleElement = document.querySelector('.projectTitle');
+        this.btnGroup = document.querySelector('.btnGroup');
     }
 
     createTaskItem(taskId, taskName){
@@ -17,6 +17,8 @@ class MainDOM {
 
 
     renderTasks(project, tasklist){
+        this.btnVisibility(project);
+
         this.tasklistContainer.innerHTML = "";
 
         this.titleElement.textContent = project.title;
@@ -26,6 +28,15 @@ class MainDOM {
 
             this.tasklistContainer.appendChild(taskItem);
         }        
+    }
+
+    btnVisibility(project){
+        if(project.type == 'default'){
+            this.btnGroup.style.display = 'none';
+        }
+        else{
+            this.btnGroup.style.display = 'block';
+        }
     }
 };
 

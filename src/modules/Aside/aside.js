@@ -40,6 +40,10 @@ class Aside {
         if(eventType == 'sidenavOpened' || eventType == 'projectSelected'){
             this.asideUI.closeAside();
         }
+
+        if(eventType == 'taskEdited'){
+            this.refresh();
+        }
     }
 };
 

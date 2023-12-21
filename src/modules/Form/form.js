@@ -15,12 +15,12 @@ class Form {
     }
 
     receiveNotification(eventType, data){
-        if(eventType == 'newProject'){
-            this.formUI.showProjectForm();
+        if(eventType == 'newProject' || eventType == 'editProject'){
+            this.formUI.showProjectForm(data);
         }
 
-        if(eventType == 'newTask'){
-            this.formUI.showTaskForm();
+        if(eventType == 'newTask' || eventType == 'editTask'){
+            this.formUI.showTaskForm(data);
         }
     }
 };

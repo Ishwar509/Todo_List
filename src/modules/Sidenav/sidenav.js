@@ -44,7 +44,8 @@ class Sidenav {
             this.sidenavUI.closeSideNav();
         }
 
-        if(eventType == 'projectAdded' || eventType == 'taskAdded' || eventType == 'taskDeleted'){
+        if(eventType == 'projectAdded' || eventType == 'taskAdded' 
+            || eventType == 'taskDeleted' || eventType == 'projectEdited'){
             this.refresh();
         }
 

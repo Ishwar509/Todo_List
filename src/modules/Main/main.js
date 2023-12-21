@@ -44,11 +44,7 @@ class Main {
             this.refresh();
         }
 
-        if(eventType == 'taskAdded'){
-            this.refresh();
-        }
-
-        if(eventType == 'taskDeleted'){
+        if(eventType == 'taskAdded' || eventType == 'taskDeleted' || eventType == 'taskEdited' || eventType == 'projectEdited'){
             this.refresh();
         }
     }

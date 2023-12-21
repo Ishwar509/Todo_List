@@ -1,6 +1,17 @@
 
 class FormDataHandler {
 
+    static loadProjectData(project){
+        document.querySelector('#projectTitleInput').value = project.title;
+    }
+
+    static loadTodoData(task){
+        document.querySelector('#taskTitleInput').value = task.title;
+        document.querySelector('#duedateInput').value = task.dueDate;
+        document.querySelector('#priorityInput').value = task.priority;
+        document.querySelector('#noteInput').value = task.note;
+    }
+
     static getProjectData(){
         let title = document.querySelector('#projectTitleInput').value;
         

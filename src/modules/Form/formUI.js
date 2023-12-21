@@ -4,6 +4,7 @@ import FormDataHandler from "./formDataHandler";
 class FormUI {
     constructor(form){
         this.form = form;
+        this.submitAction = null;
         this.projectModal = document.querySelector('.projectModal');
         this.taskModal = document.querySelector('.taskModal');
         this.projectForm = document.querySelector('.projectModal form');
@@ -15,13 +16,13 @@ class FormUI {
         this.projectForm.addEventListener('submit', () => {
             let projectData = FormDataHandler.getProjectData();
             this.projectForm.reset();
-            this.form.mediator.notify(this.form, 'addProject', projectData);
+            this.form.mediator.notify(this.form, this.submitAction == 'new' ? 'addProject' : 'modifyProject', projectData);
         });
 
         this.taskForm.addEventListener('submit', () => {
             let todoData = FormDataHandler.getTodoData();
             this.taskForm.reset();
-            this.form.mediator.notify(this.form, 'addTask', todoData);
+            this.form.mediator.notify(this.form, this.submitAction == 'new' ? 'addTask' : 'modifyTask', todoData);
         });
 
         this.closeFormBtns.forEach((curr) => {
@@ -31,11 +32,23 @@ class FormUI {
         });
     }
 
-    showProjectForm(){
+    showProjectForm(data){
+        if(data){
+            this.submitAction = 'edit';
+            FormDataHandler.loadProjectData(data);
+        }
+        else this.submitAction = 'new';
+        
         this.projectModal.showModal();
     }
 
-    showTaskForm(){
+    showTaskForm(data){
+        if(data){
+            this.submitAction = 'edit';
+            FormDataHandler.loadTodoData(data);
+        }
+        else this.submitAction = 'new';
+
         this.taskModal.showModal();
     }
 };

@@ -35,6 +35,11 @@ class DataManager {
             this.mediator.notify(this, 'projectDeleted', null);
         }
 
+        if(eventType == 'modifyProject'){
+            Object.assign(appStateManager.currProject, data);
+            this.mediator.notify(this, 'projectEdited', null);
+        }
+
         if(eventType == 'addTask'){
             appStateManager.currProject.addTodo(new Todo(data));  
             this.mediator.notify(this, 'taskAdded', null);        
@@ -43,6 +48,11 @@ class DataManager {
         if(eventType == 'deleteTask'){
             appStateManager.currProject.removeTodo(data);
             this.mediator.notify(this, 'taskDeleted', null);
+        }
+
+        if(eventType == 'modifyTask'){
+            Object.assign(appStateManager.currTask, data);
+            this.mediator.notify(this, 'taskEdited', null);
         }
     }
 };
