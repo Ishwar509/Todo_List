@@ -16,12 +16,14 @@ class Sidenav {
 
     init(){
         this.sidenavDOM.renderProjects(this.projectList);
+        this.mediator.notify(this, 'projectsLoaded', this.projectList);
         this.sidenavUI.loadUI();
         this.selectDefaultProject();
     }
 
     refresh(){
         this.sidenavDOM.renderProjects(this.projectList);
+        this.mediator.notify(this, 'projectsLoaded', this.projectList);
     }
 
     setMediator(mediator){
@@ -29,7 +31,13 @@ class Sidenav {
     }  
 
     receiveNotification(eventType, data){
+        if(eventType == 'asideOpened'){
+            this.sidenavUI.closeSideNav();
+        }
 
+        if(eventType == 'projectAdded' || eventType == 'taskAdded'){
+            this.refresh();
+        }
     }
 };
 

@@ -9,7 +9,7 @@ class MainUI {
 
     loadUI(){
         this.addTaskBtn.addEventListener('click', ()=>{
-            this.main.mediator.notify(this.main, 'newTask', null);
+            this.main.mediator.notify(this.main, 'newTask', this.main.currProject);
         });
 
         this.taskList.addEventListener('click', (e) => {

@@ -11,7 +11,7 @@ class SidenavUI {
 
     loadUI(){
         this.addProjectBtn.addEventListener('click', (e)=>{
-            this.sidenav.mediator.notify(this.sidenav, 'newProject', null);
+            this.sidenav.mediator.notify(this.sidenav, 'newProject', this.sidenav.projectList);
         });
         
         this.closeSidenavBtn.addEventListener('click', () => {
@@ -29,10 +29,11 @@ class SidenavUI {
         });
     
         this.sidenavContainer.addEventListener('click', (e) => {
-            let uid = e.target.dataset.uid;
+            let uid = e.target.closest('li')?.dataset.uid;
             if(!uid) return;
     
             this.sidenav.mediator.notify(this.sidenav, 'projectSelected', this.sidenav.projectList.get(uid));
+            this.closeSideNav();
         });
     }
 

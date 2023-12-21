@@ -16,11 +16,11 @@ class Main {
     }
 
     refresh(){
+        this.loadProjectData();
         this.mainDOM.renderTasks(this.currProject, this.taskMap);
     }
 
-    loadProjectData(project){
-        this.currProject = project;
+    loadProjectData(){
         this.taskMap.clear();
 
         let todoList = this.currProject.todoList;
@@ -40,7 +40,11 @@ class Main {
 
     receiveNotification(eventType, data){
         if(eventType == 'projectSelected'){
-            this.loadProjectData(data);
+            this.currProject = data;
+            this.refresh();
+        }
+
+        if(eventType == 'taskAdded'){
             this.refresh();
         }
     }

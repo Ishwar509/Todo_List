@@ -36,6 +36,10 @@ class Aside {
             this.setCurrTask(data);
             this.showTaskInfo();
         }
+
+        if(eventType == 'sidenavOpened' || eventType == 'projectSelected'){
+            this.asideUI.closeAside();
+        }
     }
 };
 
