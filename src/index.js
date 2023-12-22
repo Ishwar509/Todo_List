@@ -3,7 +3,7 @@ import Aside from "./modules/Aside/aside.js";
 import Sidenav from "./modules/Sidenav/sidenav.js";
 import Main from "./modules/Main/main.js";
 import Mediator from "./modules/mediator.js";
-import Form from "./modules/Form/form.js";
+import FormHandler from "./modules/Form/formHandler.js";
 import DataManager from "./modules/dataManager.js";
 import defaultProjects from "./modules/appData.js";
 import appStateManager from "./modules/appStateManager.js";
@@ -19,16 +19,16 @@ defaultProjects.forEach((project) => {
 const sidenav = new Sidenav(dataManager.getProjects());
 const aside = new Aside();
 const main = new Main();
-const form = new Form();
+const formHandler = new FormHandler();
 
 mediator.register(sidenav);
 mediator.register(main);
 mediator.register(aside);
-mediator.register(form);
+mediator.register(formHandler);
 mediator.register(appStateManager);
 mediator.register(dataManager);
 
 sidenav.init();
 main.init();
 aside.init();
-form.init();
+formHandler.init();

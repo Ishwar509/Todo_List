@@ -54,6 +54,11 @@ class DataManager {
             Object.assign(appStateManager.currTask, data);
             this.mediator.notify(this, 'taskEdited', null);
         }
+
+        if(eventType == 'modifyChecklist'){
+            Object.assign(appStateManager.currTask, data);
+            this.mediator.notify(this, 'checklistEdited', null);
+        }
     }
 };
 

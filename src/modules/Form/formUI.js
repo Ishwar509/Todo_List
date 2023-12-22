@@ -33,21 +33,17 @@ class FormUI {
     }
 
     showProjectForm(data){
-        if(data){
-            this.submitAction = 'edit';
-            FormDataHandler.loadProjectData(data);
-        }
-        else this.submitAction = 'new';
+        this.submitAction = data ? 'edit' : 'new';
+
+        FormDataHandler.loadProjectData(data);
         
         this.projectModal.showModal();
     }
 
     showTaskForm(data){
-        if(data){
-            this.submitAction = 'edit';
-            FormDataHandler.loadTodoData(data);
-        }
-        else this.submitAction = 'new';
+        this.submitAction = data ? 'edit' : 'new';
+        
+        FormDataHandler.loadTodoData(data);
 
         this.taskModal.showModal();
     }

@@ -40,7 +40,7 @@
                         <button class="deleteTask">Delete</button>
                     </div>
                 </div>
-                <button class="addStep">Checklist</button>
+                <button class="editChecklist">Checklist</button>
                 <ul class="checklist"></ul>
                 <div class="priority">Priority : </div>
                 <div class="duedate">Due Date : </div>
@@ -59,7 +59,7 @@
             </div>
             <div>
                 <button type="submit">Accept</button>
-                <button type="reset" data-action="closeForm">Cancel</button>
+                <button type="reset" class="close">Cancel</button>
             </div>
         </form>
     </dialog>
@@ -88,7 +88,22 @@
             </div>
             <div>
                 <button type="submit">Accept</button>
-                <button type="reset" data-action="closeForm">Cancel</button>
+                <button type="reset" class="close">Cancel</button>
+            </div>
+        </form>
+    </dialog>
+
+    <dialog class="checklistModal modalBox">
+        <form action="#" method="dialog">
+            <div>
+                <label for="checklistInput">Step: </label>
+                <input type="text" id="checklistInput">
+                <button type="button" class="addStep">Add</button>
+            </div>
+            <ul class="itemList"></ul>
+            <div>
+                <button type="submit">Accept</button>
+                <button type="reset" class="close">Cancel</button>
             </div>
         </form>
     </dialog>

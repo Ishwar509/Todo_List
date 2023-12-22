@@ -6,6 +6,7 @@ class AsideUI {
         this.asideContainer = document.querySelector('.asideContainer');
         this.deleteTaskBtn = document.querySelector('.deleteTask');
         this.editTaskBtn = document.querySelector('.editTask');
+        this.editChecklistBtn = document.querySelector('.editChecklist');
     }
 
     loadUI(){
@@ -20,6 +21,10 @@ class AsideUI {
 
         this.editTaskBtn.addEventListener('click', () => {
             this.aside.mediator.notify(this.aside, 'editTask', this.aside.currTask);
+        });
+
+        this.editChecklistBtn.addEventListener('click', () => {
+            this.aside.mediator.notify(this.aside, 'editChecklist', this.aside.currTask.checklist);
         });
     }
 

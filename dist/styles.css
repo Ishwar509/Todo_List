@@ -229,14 +229,14 @@ button:hover {
 }
 
 .checklist {
-    list-style: none;
     overflow:  hidden auto;
     border: 1px solid black;
     padding: 4px;
+    padding-left: 20px;
     border-radius: 4px;
 }
 
-.addStep {
+.editChecklist {
     text-align: left;
     border: none;
     border-radius: 4px;
@@ -244,11 +244,11 @@ button:hover {
     padding-left: 10px;
 }
 
-.addStep:hover {
+.editChecklist:hover {
     background-color: aqua;
 }
 
-.addStep::before {
+.editChecklist::before {
     content: '+ ';
     font-size: 1.2rem;
 }

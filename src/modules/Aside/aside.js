@@ -41,7 +41,7 @@ class Aside {
             this.asideUI.closeAside();
         }
 
-        if(eventType == 'taskEdited'){
+        if(eventType == 'taskEdited' || eventType == 'checklistEdited'){
             this.refresh();
         }
     }
