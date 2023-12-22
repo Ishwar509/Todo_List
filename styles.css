@@ -249,6 +249,11 @@ button:hover {
     background-color: red;
 }
 
+.emptyList{
+    display: grid;
+    place-content: center;
+    font-size: 1.5rem;
+}
 
 /* ----------------Aside------------------- */
 
