@@ -37,6 +37,13 @@ class MainDOM {
         return taskItem;
     }
 
+    createAlertBox(){
+        let alertBox = document.createElement('div');
+        alertBox.classList.add('emptyList');
+        alertBox.textContent = "Project is Empty";
+
+        return alertBox;
+    }
 
     renderTasks(project, tasklist){
         this.btnVisibility(project);
@@ -45,9 +52,13 @@ class MainDOM {
 
         this.titleElement.textContent = project.title;
         
+        if(project.todoList.length == 0){
+            this.tasklistContainer.appendChild(this.createAlertBox());
+            return;
+        }
+
         for(let [uid, task] of tasklist){
             let taskItem = this.createTaskItem(uid, task);
-
             this.tasklistContainer.appendChild(taskItem);
         }        
     }
