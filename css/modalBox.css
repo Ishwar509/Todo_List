@@ -31,3 +31,52 @@ form {
     justify-content: space-evenly;
     align-items: center;
 }
+
+.checklistModal {
+    width: 400px;
+    height: 400px;
+}
+
+.checklistModal form .itemList {
+    display: grid;
+    grid-template-rows: repeat(auto-fill, 30px);
+    grid-auto-flow: row;
+    grid-auto-rows: 30px;
+    width: 80%;
+    height: 200px;
+    overflow: auto;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 4px;
+    align-items: center;
+}
+
+.itemList li {
+    display: grid;
+    grid-template-columns: 1fr 40px;
+    padding: 0 4px;
+}
+
+.itemList li div::before {
+    content: '> ';
+}
+
+.itemList li div {
+    width: 90%;
+    border-bottom: 1px solid black;
+}
+
+.itemList li .deleteItem {
+    border: none;
+    background-color: lightcoral;
+    font-weight: bolder;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    justify-self: center;
+}
+
+.itemList li .deleteItem:hover {
+    transition: transform 0.2s;
+    transform: scale(1.1);
+}
