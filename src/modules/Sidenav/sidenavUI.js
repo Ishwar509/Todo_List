@@ -38,7 +38,7 @@ class SidenavUI {
     }
 
     openSideNav(){
-        this.sidenavContainer.style.width = '240px';
+        this.sidenavContainer.style.width = '300px';
         this.sidenav.mediator.notify(this.sidenav, 'sidenavOpened', null);
     }
 

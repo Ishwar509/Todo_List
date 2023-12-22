@@ -37,7 +37,7 @@ class Aside {
             this.showTaskInfo();
         }
 
-        if(eventType == 'sidenavOpened' || eventType == 'projectSelected'){
+        if(eventType == 'sidenavOpened' || eventType == 'projectSelected' || eventType == 'taskDeleted'){
             this.asideUI.closeAside();
         }
 

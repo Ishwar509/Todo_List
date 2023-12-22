@@ -14,8 +14,6 @@ class Mediator {
     }
 
     notify(sender, eventType, data){
-        console.log(eventType);
-
         this.components.forEach((component) => {
             if(component !== sender){
                 component.receiveNotification(eventType, data);

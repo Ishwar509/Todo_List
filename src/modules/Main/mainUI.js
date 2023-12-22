@@ -23,7 +23,22 @@ class MainUI {
         });
 
         this.taskList.addEventListener('click', (e) => {
-            let uid = e.target.dataset.uid;
+
+            if(e.target.classList.contains('deleteTask_main')){
+                const taskItem = e.target.closest('.taskItem');
+                this.main.mediator.notify(this.main, 'deleteTask', this.main.taskMap.get(taskItem.dataset.uid));
+                return;
+            }
+            
+            if(e.target.classList.contains('checkbox')){
+                const taskItem = e.target.closest('.taskItem');
+                const task = this.main.taskMap.get(taskItem.dataset.uid);
+                task.changeStatus();
+                taskItem.dataset.isComplete = task.isComplete;
+                return;
+            }
+
+            let uid = e.target.closest('.taskItem')?.dataset.uid;
             
             if(!uid) return;
 

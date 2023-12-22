@@ -44,7 +44,7 @@ button:hover {
 }
 
 #search {
-    width: 200px;
+    width: 90%;
     height: 40px;
     padding-left: 4px;
     border-radius: 4px;
@@ -56,7 +56,7 @@ button:hover {
     border-radius: 4px;
     background-color: transparent;
     border: none;
-    width: 200px;
+    width: 90%;
     transition: background-color 0.2s;
 }
 
@@ -70,7 +70,7 @@ button:hover {
     align-items: center;
     justify-content: space-between;
     padding: 0 4px;
-    width: 200px;
+    width: 90%;
     height: 40px;
     background-color: lightgray;
     border-radius: 4px;
@@ -154,15 +154,20 @@ button:hover {
     list-style: none;
     overflow: hidden auto;
     display: grid;
-    grid-template-rows: repeat(auto-fill, 40px);
+    grid-template-rows: repeat(auto-fill, 60px);
     row-gap: 10px;
     grid-auto-flow: row;
-    grid-auto-rows: 40px;
+    grid-auto-rows: 60px;
 }
 
 .tasklist li {
     width: 95%;
+    display: grid;
+    grid-template-columns: 40px 1fr 40px;
+    grid-template-rows: 1fr 1fr;
+    padding: 4px;
     border: 1px solid black;
+    border-radius: 4px;
 }
 
 .tasklist::-webkit-scrollbar {
@@ -196,6 +201,54 @@ button:hover {
     font-size: 2rem;
     margin-right: 10px;
 }
+
+.taskItem .checkbox {
+    grid-column: 1;
+    grid-row: 1 / 3;
+
+    width: 20px;
+    height: 20px;
+
+    place-self: center;
+}
+
+.taskItem .duedate_main {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.taskItem .deleteTask_main {
+    grid-row: 1 / 3;
+
+    width: 30px;
+    height: 30px;
+
+    place-self: center;
+
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 50%;
+    background-color: lightcoral;
+}
+
+.taskItem[data-is-Complete="true"]{
+    & .title_main, .duedate_main{
+        text-decoration: line-through;
+    }
+}
+
+.taskItem[data-priority="Low"]{
+    background-color: lightgreen;
+}
+
+.taskItem[data-priority="Medium"]{
+    background-color: yellow;
+}
+
+.taskItem[data-priority="High"]{
+    background-color: red;
+}
+
 
 /* ----------------Aside------------------- */
 
@@ -275,7 +328,7 @@ button:hover {
 
     .sidenavContainer {
         position: static;
-        width: 240px;
+        width: 280px;
     }
 
     .sidenav {

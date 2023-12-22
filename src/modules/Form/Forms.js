@@ -16,9 +16,9 @@ class BasicForm {
 
     handleFormSubmission(){
         const message = this.getMessage();
-        const data = this.getData();
+        const formData = this.getData();
         this.formElement.reset();
-        this.formHandler.mediator.notify(this.formHandler, message, data);
+        this.formHandler.mediator.notify(this.formHandler, message, formData);
     }
 
     setupUI(){

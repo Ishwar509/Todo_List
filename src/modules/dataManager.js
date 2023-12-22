@@ -1,5 +1,5 @@
 import Project from "./factories/project";
-import { Todo, Step } from "./factories/todo";
+import Todo from "./factories/todo";
 import appStateManager from "./appStateManager";
 
 class DataManager {

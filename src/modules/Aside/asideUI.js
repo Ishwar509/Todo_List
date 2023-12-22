@@ -35,7 +35,7 @@ class AsideUI {
 
     openAside(){
         this.aside.mediator.notify(this.aside, 'asideOpened', null);
-        this.asideContainer.style.width = '240px';
+        this.asideContainer.style.width = '300px';
     }
 };
 

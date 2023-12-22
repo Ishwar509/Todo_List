@@ -6,11 +6,33 @@ class MainDOM {
         this.btnGroup = document.querySelector('.btnGroup');
     }
 
-    createTaskItem(taskId, taskName){
+    createTaskItem(taskId, task){
         let taskItem = document.createElement('li');
+        taskItem.classList.add('taskItem');
         taskItem.dataset.uid = taskId;
+        taskItem.dataset.priority = task.priority;
+        taskItem.dataset.isComplete = task.isComplete;
 
-        taskItem.textContent = taskName;
+        const checkbox = document.createElement('input');
+        checkbox.setAttribute('type', 'checkbox');
+        checkbox.setAttribute('id', taskId);
+        checkbox.setAttribute('class', 'checkbox');
+
+        if(task.isComplete) checkbox.setAttribute('checked', '');
+
+        const title = document.createElement('div');
+        title.setAttribute('class', 'title_main');
+        title.textContent = task.title;
+
+        const duedate = document.createElement('div');
+        duedate.setAttribute('class', 'duedate_main');
+        duedate.textContent = `Due-Date : ${task.dueDate}`;
+
+        const delBtn = document.createElement('button');
+        delBtn.setAttribute('class', 'deleteTask_main');
+        delBtn.innerHTML = '&times;';
+
+        taskItem.append(checkbox, title, duedate, delBtn);
 
         return taskItem;
     }
@@ -24,7 +46,7 @@ class MainDOM {
         this.titleElement.textContent = project.title;
         
         for(let [uid, task] of tasklist){
-            let taskItem = this.createTaskItem(uid, task.title);
+            let taskItem = this.createTaskItem(uid, task);
 
             this.tasklistContainer.appendChild(taskItem);
         }        
