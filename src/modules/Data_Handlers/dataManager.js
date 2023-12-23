@@ -1,6 +1,6 @@
-import Project from "./factories/project";
-import Todo from "./factories/todo";
-import appStateManager from "./appStateManager";
+import Project from "../factories/project";
+import Todo from "../factories/todo";
+import appStateManager from "../appStateManager";
 import LocalStorage from "./LocalStorage";
 
 class DataManager {

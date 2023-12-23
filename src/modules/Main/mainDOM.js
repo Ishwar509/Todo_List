@@ -65,10 +65,10 @@ class MainDOM {
 
     btnVisibility(project){
         if(project.type == 'default'){
-            this.btnGroup.style.display = 'none';
+            this.btnGroup.style.visibility = 'hidden';
         }
         else{
-            this.btnGroup.style.display = 'block';
+            this.btnGroup.removeAttribute('style');
         }
     }
 };

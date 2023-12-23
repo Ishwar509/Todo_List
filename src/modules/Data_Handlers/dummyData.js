@@ -1,5 +1,5 @@
-import Todo from "./factories/todo";
-import Project from "./factories/project";
+import Todo from "../factories/todo";
+import Project from "../factories/project";
 
 const dummyData1 = [
     {

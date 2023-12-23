@@ -4,8 +4,8 @@ import Sidenav from "./modules/Sidenav/sidenav.js";
 import Main from "./modules/Main/main.js";
 import Mediator from "./modules/mediator.js";
 import FormHandler from "./modules/Form/formHandler.js";
-import DataManager from "./modules/dataManager.js";
-import AppData from "./modules/AppData.js";
+import DataManager from "./modules/Data_Handlers/dataManager.js";
+import AppData from "./modules/Data_Handlers/AppData.js";
 import appStateManager from "./modules/appStateManager.js";
 
 let projectList = AppData.getData();

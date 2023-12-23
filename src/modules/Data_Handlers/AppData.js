@@ -1,7 +1,7 @@
 import defaultProjects from "./dummyData";
 import LocalStorage from "./LocalStorage";
-import Project from "./factories/project";
-import Todo from "./factories/todo";
+import Project from "../factories/project";
+import Todo from "../factories/todo";
 
 class AppData {
     static getData(){
