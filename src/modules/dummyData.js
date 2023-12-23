@@ -1,7 +1,6 @@
 import Todo from "./factories/todo";
 import Project from "./factories/project";
 
-
 const dummyData1 = [
     {
         title: 'Complete Project Proposal',

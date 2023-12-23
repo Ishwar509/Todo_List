@@ -22,7 +22,7 @@ class Main {
 
     loadProjectData(){
         this.taskMap.clear();
-
+        
         let todoList = this.currProject.todoList;
         todoList.forEach((todo) => {
             this.taskMap.set(this.getUID(), todo);

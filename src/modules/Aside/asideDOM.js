@@ -10,6 +10,8 @@ class AsideDOM {
     }
 
     renderTaskInfo(task){
+        if(!task) return;
+        
         this.taskTitleElement.textContent = task.title;
         this.dueDateElement.textContent = `Due-Date: ${task.dueDate}`;
         this.noteElement.textContent = task.note;

@@ -1,11 +1,12 @@
 import Project from "./factories/project";
 import Todo from "./factories/todo";
 import appStateManager from "./appStateManager";
+import LocalStorage from "./LocalStorage";
 
 class DataManager {
-    constructor(){
+    constructor(projectList = []){
         this.mediator = null;
-        this.projectList = new Set();
+        this.projectList = projectList;
     }
 
     getProjects(){
@@ -13,51 +14,58 @@ class DataManager {
     }
 
     addProject(project){
-        this.projectList.add(project);
+        this.projectList.push(project);
     }
 
     removeProject(project){
-        this.projectList.delete(project);
+        this.projectList = this.projectList.filter(curr => curr !== project);
     }
 
     setMediator(mediator){
         this.mediator = mediator;
     }
 
-    receiveNotification(eventType, data){
-        if(eventType == 'addProject'){
-            this.addProject(new Project(data));
-            this.mediator.notify(this, 'projectAdded', null);
-        }
+    notifier(message){
+        LocalStorage.storeData('projectList', this.projectList);
+        this.mediator.notify(this, message, null);
+    }
 
-        if(eventType == 'deleteProject'){
-            this.removeProject(data);
-            this.mediator.notify(this, 'projectDeleted', null);
-        }
-
-        if(eventType == 'modifyProject'){
-            Object.assign(appStateManager.currProject, data);
-            this.mediator.notify(this, 'projectEdited', null);
-        }
-
-        if(eventType == 'addTask'){
-            appStateManager.currProject.addTodo(new Todo(data));  
-            this.mediator.notify(this, 'taskAdded', null);        
-        }
-
-        if(eventType == 'deleteTask'){
-            appStateManager.currProject.removeTodo(data);
-            this.mediator.notify(this, 'taskDeleted', null);
-        }
-
-        if(eventType == 'modifyTask'){
-            Object.assign(appStateManager.currTask, data);
-            this.mediator.notify(this, 'taskEdited', null);
-        }
-
-        if(eventType == 'modifyChecklist'){
-            Object.assign(appStateManager.currTask, data);
-            this.mediator.notify(this, 'checklistEdited', null);
+    receiveNotification(eventType, data) {
+        switch (eventType) {
+            case 'addProject':
+                this.addProject(new Project(data));
+                this.notifier('projectAdded');
+                break;
+    
+            case 'deleteProject':
+                this.removeProject(data);
+                this.notifier('projectDeleted');
+                break;
+    
+            case 'modifyProject':
+                Object.assign(appStateManager.currProject, data);
+                this.notifier('projectEdited');
+                break;
+    
+            case 'addTask':
+                appStateManager.currProject.addTodo(new Todo(data));
+                this.notifier('taskAdded');
+                break;
+    
+            case 'deleteTask':
+                appStateManager.currProject.removeTodo(data);
+                this.notifier('taskDeleted');
+                break;
+    
+            case 'modifyTask':
+                Object.assign(appStateManager.currTask, data);
+                this.notifier('taskEdited');
+                break;
+    
+            case 'modifyChecklist':
+                Object.assign(appStateManager.currTask, data);
+                this.notifier('checklistEdited');
+                break;
         }
     }
 };

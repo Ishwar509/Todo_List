@@ -35,6 +35,7 @@ class MainUI {
                 const task = this.main.taskMap.get(taskItem.dataset.uid);
                 task.changeStatus();
                 taskItem.dataset.isComplete = task.isComplete;
+                this.main.mediator.notify(this.main, 'taskEdited', null);
                 return;
             }
 

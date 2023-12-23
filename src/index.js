@@ -5,16 +5,13 @@ import Main from "./modules/Main/main.js";
 import Mediator from "./modules/mediator.js";
 import FormHandler from "./modules/Form/formHandler.js";
 import DataManager from "./modules/dataManager.js";
-import defaultProjects from "./modules/appData.js";
+import AppData from "./modules/AppData.js";
 import appStateManager from "./modules/appStateManager.js";
 
+let projectList = AppData.getData();
 
 const mediator = new Mediator();
-const dataManager = new DataManager();
-
-defaultProjects.forEach((project) => {
-    dataManager.addProject(project);
-});
+const dataManager = new DataManager(projectList);
 
 const sidenav = new Sidenav(dataManager.getProjects());
 const aside = new Aside();
