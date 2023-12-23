@@ -18,7 +18,8 @@ class DataManager {
     }
 
     removeProject(project){
-        this.projectList = this.projectList.filter(curr => curr !== project);
+        let index = this.projectList.findIndex((curr) => curr == project);
+        this.projectList.splice(index, 1);
     }
 
     setMediator(mediator){
