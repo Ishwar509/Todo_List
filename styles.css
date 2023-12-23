@@ -296,6 +296,7 @@ button:hover {
     display: grid;
     place-content: center;
     font-size: 1.5rem;
+    color: #ecf0f1;
 }
 
 /* ----------------Aside------------------- */
