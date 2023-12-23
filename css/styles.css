@@ -170,18 +170,43 @@ button:hover {
 
 #openSidenav {
     justify-self: start;
+    border: none;
+    background-color: transparent;
+    width: 30px;
+    height: 30px;
+}
+
+#openSidenav:hover {
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    transition: border 0.2s;
 }
 
 .projectInfo {
     width: 95%;
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
 }
 
 .projectTitle {
     color: var(--highlightColor);
     font-size: 2rem;
+}
+
+.btnGroup {
+    display: flex;
+    align-items: center;
+}
+
+.btnGroup img {
+    width: 30px;
+    height: 30px;
+    margin: 0 10px;
+}
+
+.btnGroup img:hover {
+    transition: transform 0.2s;
+    transform: scale(1.2);
 }
 
 .tasklist {
@@ -360,7 +385,7 @@ button:hover {
     text-align: left;
     border: none;
     border-radius: 4px;
-    background-color: gray;
+    background-color: rgb(194, 194, 194);
     padding-left: 10px;
     font-size: 1.2rem;
 }
