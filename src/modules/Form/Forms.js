@@ -1,6 +1,6 @@
 import FormDataHandler from "./formDataHandler";
 
-class BasicForm {
+class BaseForm {
     constructor(formHandler, getData, loadData){
         this.submitAction = null;
         this.formHandler = formHandler;
@@ -21,6 +21,10 @@ class BasicForm {
         this.formHandler.mediator.notify(this.formHandler, message, formData);
     }
 
+    getMessage(){
+        return this.submitAction == 'new' ? `add${this.formType}` : `modify${this.formType}`;
+    }
+
     setupUI(){
         this.formElement.addEventListener('submit', () => {
             this.handleFormSubmission();
@@ -33,46 +37,37 @@ class BasicForm {
 };
 
 
-class ProjectForm extends BasicForm {
+class ProjectForm extends BaseForm {
     constructor(formHandler, getData, loadData){
         super(formHandler, getData, loadData);
+        this.formType = 'Project';
         this.modal = document.querySelector('.projectModal');
         this.formElement = document.querySelector('.projectModal form');
         this.closeBtn = document.querySelector('.projectModal .close');
     }
-
-    getMessage(){
-        return this.submitAction == 'new' ? 'addProject' : 'modifyProject';
-    }
 };
 
-class TaskForm extends BasicForm {
+class TaskForm extends BaseForm {
     constructor(formHandler, getData, loadData){
         super(formHandler, getData, loadData);
+        this.formType = 'Task';
         this.modal = document.querySelector('.taskModal');
         this.formElement = document.querySelector('.taskModal form');
         this.closeBtn = document.querySelector('.taskModal .close');
     }
-
-    getMessage(){
-        return this.submitAction == 'new' ? 'addTask' : 'modifyTask';
-    }
 };
 
 
-class ChecklistForm extends BasicForm {
+class ChecklistForm extends BaseForm {
     constructor(formHandler, getData, loadData){
         super(formHandler, getData, loadData);
+        this.formType = 'Checklist';
         this.modal = document.querySelector('.checklistModal');
         this.formElement = document.querySelector('.checklistModal form');
         this.closeBtn = document.querySelector('.checklistModal .close');
         this.itemList = document.querySelector('.itemList');
         this.addStepBtn = document.querySelector('.checklistModal .addStep');
         this.init();
-    }
-
-    getMessage(){
-        return 'modifyChecklist';
     }
 
     init(){

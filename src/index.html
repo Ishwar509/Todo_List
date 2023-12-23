@@ -44,7 +44,7 @@
                 <ul class="checklist"></ul>
                 <div class="priority">Priority : </div>
                 <div class="duedate">Due Date : </div>
-                <div>Note : </div>
+                <div class="notelabel">Note : </div>
                 <p class="note"></p>
                 <div class="createDate">Created on : </div>
             </div>
@@ -55,7 +55,7 @@
         <form action="#" method="dialog">
             <div>
                 <label for="projectTitleInput">Project Name</label><br>
-                <input  id="projectTitleInput" type="text" placeholder="Name" required>
+                <input  id="projectTitleInput" type="text" placeholder="Name"  minlength="1" maxlength="20" required>
             </div>
             <div>
                 <button type="submit">Accept</button>
@@ -68,7 +68,7 @@
         <form action="#" method="dialog">
             <div>
                 <label for="taskTitleInput">Task Name</label>
-                <input type="text" id="taskTitleInput" required>
+                <input type="text" id="taskTitleInput" required minlength=1 maxlength="50">
             </div>
             <div>
                 <label for="duedateInput">Due Date</label>
@@ -84,7 +84,7 @@
             </div>
             <div>
                 <label for="noteInput">Note</label><br>
-                <textarea id="noteInput" cols="30" rows="10"></textarea>
+                <textarea id="noteInput" cols="35" rows="10"></textarea>
             </div>
             <div>
                 <button type="submit">Accept</button>
@@ -97,7 +97,7 @@
         <form action="#" method="dialog">
             <div>
                 <label for="checklistInput">Step: </label>
-                <input type="text" id="checklistInput">
+                <input type="text" id="checklistInput" maxlength="25">
                 <button type="button" class="addStep">Add</button>
             </div>
             <ul class="itemList"></ul>

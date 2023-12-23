@@ -41,8 +41,6 @@ class FormDataHandler {
             checklist.push(step.textContent);
         });
 
-        console.log(checklist);
-
         return {checklist};
     }
 

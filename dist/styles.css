@@ -1,8 +1,30 @@
+@import url(https://fonts.googleapis.com/css2?family=Roboto&family=Space+Mono);
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: monospace;
+    font-family: 'Space Mono', monospace;
+}
+
+:root {
+    font-size: 13px;
+
+    --sidenavColor: #111B24;
+    --mainColor: #1E272D;
+    --asideColor: #2c3e50;
+
+    --neon: #A1B2C3;
+    --monochrome: #65748B;
+    --forestNight: #5A7C5E;
+    --deepSea: #6fa3e8;
+    --highlightColor: var(--deepSea);
+    --buttonColor: #A1B2C3;
+
+    --lowPriority:  #3498db    ;
+    --mediumPriority: #f39c12  ;
+    --highPriority: #e74c3c ;
 }
 
 .wrapper {
@@ -31,7 +53,7 @@ button:hover {
     display: grid;
     grid-template-rows: auto auto auto 1fr auto;
     row-gap: 10px;
-    background-color: orange;
+    background-color: var(--sidenavColor);
 }
 
 #closeSidenav {
@@ -41,6 +63,7 @@ button:hover {
     border: none;
     border-radius: 4px;
     transition: background-color 0.2s;
+    color: var(--buttonColor);
 }
 
 #search {
@@ -48,9 +71,11 @@ button:hover {
     height: 40px;
     padding-left: 4px;
     border-radius: 4px;
+    background-color: lightgray;
 }
 
 #addProject {
+    color: var(--highlightColor);
     padding: 10px 0;
     font-size: 1.3rem;
     border-radius: 4px;
@@ -72,32 +97,38 @@ button:hover {
     padding: 0 4px;
     width: 90%;
     height: 40px;
-    background-color: lightgray;
     border-radius: 4px;
     margin-bottom: 4px;
     transition: background-color 0.2s, border 0.1s;
 }
 
+.projects .title {
+    color: #A1B2C3;
+    font-size: 1.2rem;
+}
+
 .projects .taskCount{
+    font-family: 'Roboto', monospace;
     width: 30px;
     height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background-color: lightcoral;
+    color: #111B24;
+    background-color: rgb(194, 194, 194);
     font-weight: bold;
 }
 
 .default {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid whitesmoke;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .user {
     overflow: hidden auto;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid whitesmoke;
 }
 
 .user::-webkit-scrollbar {
@@ -115,11 +146,12 @@ button:hover {
 }
 
 #closeSidenav:hover, #addProject:hover {
-    background-color: lightblue;
+    background-color: rgba(183, 179, 179, 0.3);
 } 
 
 .projects li:hover {
-    background-color: aquamarine;
+    color: white;
+    background-color: rgba(183, 179, 179, 0.3);
     border-left: 4px solid blue;
 }
 
@@ -133,6 +165,7 @@ button:hover {
     grid-template-rows: auto auto 1fr auto;  
     padding: 20px;
     row-gap: 20px;
+    background-color: var(--mainColor);
 }
 
 #openSidenav {
@@ -147,23 +180,24 @@ button:hover {
 }
 
 .projectTitle {
-    font-size: 1.5rem;
+    color: var(--highlightColor);
+    font-size: 2rem;
 }
 
 .tasklist {
     list-style: none;
     overflow: hidden auto;
     display: grid;
-    grid-template-rows: repeat(auto-fill, 60px);
+    grid-template-rows: repeat(auto-fill, 80px);
     row-gap: 10px;
     grid-auto-flow: row;
-    grid-auto-rows: 60px;
+    grid-auto-rows: 80px;
 }
 
 .tasklist li {
     width: 95%;
     display: grid;
-    grid-template-columns: 40px 1fr 40px;
+    grid-template-columns: 40px minmax(180px, 1fr) 60px;
     grid-template-rows: 1fr 1fr;
     padding: 4px;
     border: 1px solid black;
@@ -188,18 +222,22 @@ button:hover {
 .addTask {
     width: 95%;
     height: 50px;
-    padding: 8px;
     padding-left: 20px;
+    border: none;
+    border-radius: 8px;
     background-color: gray;
     color: black;
     font-size: 1.5rem;
     text-align: left;
+    display: grid;
+    grid-template-columns: 40px auto;
+    align-items: center;
 }
 
 .addTask::before {
     content: '+';
     font-size: 2rem;
-    margin-right: 10px;
+    justify-self: center;
 }
 
 .taskItem .checkbox {
@@ -212,6 +250,10 @@ button:hover {
     place-self: center;
 }
 
+.taskItem .title_main {
+    overflow-wrap: break-word;
+}
+
 .taskItem .duedate_main {
     grid-column: 2;
     grid-row: 2;
@@ -220,15 +262,16 @@ button:hover {
 .taskItem .deleteTask_main {
     grid-row: 1 / 3;
 
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
 
     place-self: center;
-
-    font-size: 1.5rem;
+    color: lightgray;
+    font-size: 2rem;
+    font-weight: bold;
     border: none;
     border-radius: 50%;
-    background-color: lightcoral;
+    background-color: rgb(47, 47, 47);
 }
 
 .taskItem[data-is-Complete="true"]{
@@ -238,15 +281,15 @@ button:hover {
 }
 
 .taskItem[data-priority="Low"]{
-    background-color: lightgreen;
+    background-color: var(--lowPriority);
 }
 
 .taskItem[data-priority="Medium"]{
-    background-color: yellow;
+    background-color: var(--mediumPriority);
 }
 
 .taskItem[data-priority="High"]{
-    background-color: red;
+    background-color: var(--highPriority);
 }
 
 .emptyList{
@@ -272,18 +315,35 @@ button:hover {
     display: grid;
     grid-template-rows: auto auto auto 2fr auto auto auto 1fr;
     row-gap: 10px;
-    background-color: orange;
+    background-color: var(--asideColor);
+    color: lightgray;
 }
 
 .closeAside {
     justify-self: end;
     width: 40px;
     font-size: 2rem;
+    border: none;
+    color: var(--buttonColor);
+    background-color: transparent;
+}
+
+.closeAside:hover {
+    border-radius: 4px;
+    background-color: rgba(183, 179, 179, 0.3);   
 }
 
 .taskInfo {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+}
+
+.taskTitle {
+    max-width: 160px;
+    justify-self: left;
+    overflow-wrap: break-word;
+    color: #ecf0f1; 
 }
 
 .checklist {
@@ -295,15 +355,13 @@ button:hover {
 }
 
 .editChecklist {
+    color: black;
     text-align: left;
     border: none;
     border-radius: 4px;
-    background-color: transparent;
+    background-color: gray;
     padding-left: 10px;
-}
-
-.editChecklist:hover {
-    background-color: aqua;
+    font-size: 1.2rem;
 }
 
 .editChecklist::before {
@@ -312,6 +370,7 @@ button:hover {
 }
 
 .note {
+    color: #bdc3c7;
     border: 1px solid black;
     padding: 4px;
     border-radius: 4px;
@@ -321,7 +380,7 @@ button:hover {
 
 /* -------------------Media Queries-------------- */
 
-@media  screen and (min-width: 800px) {
+@media  screen and (min-width: 900px) {
 
     #closeSidenav, #openSidenav {
         display: none;
